@@ -1,0 +1,7 @@
+<h1>Create a new Url</h1>
+<%= form_for :url, url: urls_path do |f| %>
+  <div class="input-field">
+    <%= f.text_field :target, :value => "http://" %>
+  </div>
+  <%= f.submit 'Generate', :class => 'btn center' %>
+<% end %>

@@ -1,0 +1,19 @@
+<h1>All Urls</h1>
+
+<%= link_to "Generate New URL", new_url_path, :class => 'btn' %>
+<table class="bordered">
+    <thead>
+        <tr>
+            <th>URL Target</th>
+            <th>Shortened</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @urls.each do |url| %>
+            <tr>
+                <td><%= link_to url.target, url.target %></td>
+                <td><%= link_to url.fullShortcodePath, url.fullShortcodePath %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
