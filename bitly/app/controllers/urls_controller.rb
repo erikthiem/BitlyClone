@@ -16,7 +16,12 @@ class UrlsController < ApplicationController
 
     def go
         @url = Url.find_by_shortcode(params[:shortcode])
-        redirect_to (if @url then @url.target else not_found_path end)
+        if @url
+            @url.incrementClicks
+            redirect_to @url.target
+        else
+            redirect_to not_found_path
+        end
     end
 
     private

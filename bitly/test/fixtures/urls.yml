@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  target: MyString
-  shortcode: MyString
+  target: "http://www.google.com"
+  shortcode: "abc123"
 
 two:
   target: MyString
