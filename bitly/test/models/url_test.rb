@@ -1,16 +1,24 @@
 require 'test_helper'
 
 class UrlTest < ActiveSupport::TestCase
+
+  include Devise::Test::IntegrationHelpers
+
+  setup do
+      @user = users(:one)
+      sign_in @user
+  end
+
   # test "the truth" do
   #   assert true
   # end
   test "should save with an address starting with http://" do
-      u = Url.new :target => 'http://www.google.com'
+      u = Url.new :target => 'http://www.google.com', :user_id => @user.id
       assert u.save
   end
 
   test "should save with an address starting with https://" do
-      u = Url.new :target => 'https://www.google.com'
+      u = Url.new :target => 'https://www.google.com', :user_id => @user.id
       assert u.save
   end
 

@@ -3,6 +3,7 @@
 one:
   target: "http://www.google.com"
   shortcode: "abc123"
+  user_id: 1
 
 two:
   target: MyString
