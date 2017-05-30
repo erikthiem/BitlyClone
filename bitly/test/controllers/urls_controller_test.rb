@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class UrlsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::TestHelpers
+
   setup do
     @url = urls(:one)
+    sign_in @user
   end
 
   test "should get index" do
