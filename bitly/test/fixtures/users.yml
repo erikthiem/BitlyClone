@@ -13,3 +13,4 @@ two:
   id: 2
   email: user2@example.com
   encrypted_password: password2
+  is_admin: true

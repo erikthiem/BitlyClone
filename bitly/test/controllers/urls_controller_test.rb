@@ -12,7 +12,7 @@ class UrlsControllerTest < ActionController::TestCase # ActionDispatch::Integrat
   end
 
   test "should get index" do
-    get :index #urls_url
+    get :index
     assert_response :success
   end
 
@@ -30,8 +30,6 @@ class UrlsControllerTest < ActionController::TestCase # ActionDispatch::Integrat
   end
 
   test "should increment the click count when a url shortcode is hit" do
-      #params = {}
-      #params[:shortcode] = @url.shortcode
       get :go, params: {shortcode: @url.shortcode}
       assert_equal 1, @url.reload.clicks
   end
