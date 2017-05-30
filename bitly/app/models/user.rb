@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :urls
+
+  def totalClicks
+      (self.urls.map { |url| url.clicks }).sum
+  end
 end

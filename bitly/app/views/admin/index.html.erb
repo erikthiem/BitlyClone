@@ -1,2 +1,32 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+<h1>Users</h1>
+
+
+    <ul class="collapsible" data-collapsible="accordion">
+        <% @users.each do |user| %>
+            <li>
+              <div class="collapsible-header">
+                  <%= user.email %>
+                  <span class="secondary-content">Total clicks: <%= user.totalClicks %></span>
+              </div>
+              <div class="collapsible-body">
+                  <table class="bordered">
+                      <thead>
+                          <tr>
+                              <th>Target</th>
+                              <th>Shortcode</th>
+                              <th>Clicks</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <% user.urls.each do |url| %>
+                              <tr>
+                                  <td><%= link_to url.target, url.target %></td>
+                                  <td><%= link_to url.fullShortcodePath, url.fullShortcodePath %></td>
+                                  <td><%= url.clicks %></td>
+                              </tr>
+                          <% end %>
+                      </tbody>
+                  </table>
+              </div>
+            </li>
+        <% end %>
