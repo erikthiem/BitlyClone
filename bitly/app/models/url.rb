@@ -1,6 +1,7 @@
 require 'SecureRandom'
 
 class Url < ApplicationRecord
+    validates :target, presence: true, format: { with: /http:\/\/|https:\/\//, message: "Must start with http:// or https://" }
     before_save :generate_shortcode
 
     def fullShortcodePath

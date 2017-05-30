@@ -10,7 +10,7 @@ class UrlsController < ApplicationController
     def create
         @url = Url.new url_params
         if @url.save
-            redirect_to urls_path
+            redirect_to "/"
         end
     end
 
