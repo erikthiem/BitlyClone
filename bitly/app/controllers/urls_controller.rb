@@ -4,13 +4,15 @@ class UrlsController < ApplicationController
     end
 
     def new
-        @url = Url.new
+        @url = Url.new :target => "http://"
     end
 
     def create
         @url = Url.new url_params
         if @url.save
             redirect_to "/"
+        else
+            render :new
         end
     end
 

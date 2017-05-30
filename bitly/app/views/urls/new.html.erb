@@ -1,7 +1,15 @@
 <h1>Create a new Url</h1>
 <%= form_for :url, url: urls_path do |f| %>
   <div class="input-field">
-    <%= f.text_field :target, :value => "http://" %>
+    <%= f.text_field :target, :value => @url.target %>
   </div>
   <%= f.submit 'Generate', :class => 'btn center' %>
+<% end %>
+
+<% if @url.errors.any? %>
+    <script type="text/javascript">
+        <% @url.errors.full_messages.each do |message| %>
+            Materialize.toast("Error: <%= message %>", 5000, "red white-text");
+        <% end %>
+    </script>
 <% end %>
