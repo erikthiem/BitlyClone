@@ -1,6 +1,9 @@
 class UrlsController < ApplicationController
+
+    before_action :authenticate_user!, :except => [:go]
+
     def index
-        @urls = Url.all.reverse
+        @urls = current_user.urls.reverse
     end
 
     def new
@@ -9,6 +12,7 @@ class UrlsController < ApplicationController
 
     def create
         @url = Url.new url_params
+        @url.user_id = current_user.id
         if @url.save
             redirect_to "/"
         else
@@ -17,6 +21,7 @@ class UrlsController < ApplicationController
     end
 
     def go
+
         @url = Url.find_by_shortcode(params[:shortcode])
         if @url
             @url.incrementClicks
@@ -29,6 +34,6 @@ class UrlsController < ApplicationController
     private
 
     def url_params
-        params.require(:url).permit(:target)
+        params.require(:url).permit(:target, :user_id)
     end
 end

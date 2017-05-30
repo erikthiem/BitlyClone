@@ -7,6 +7,8 @@ class Url < ApplicationRecord
     validate :test_URI
     validate :test_response
 
+    belongs_to :user
+
     before_create :generate_shortcode
 
     def fullShortcodePath
